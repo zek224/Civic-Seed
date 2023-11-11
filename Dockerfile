@@ -17,6 +17,6 @@ COPY --from=build-stage /app/build /server/public
 
 # copy the backend
 COPY server/ ./
-COPY ../global-bundle.pem .
+COPY global-bundle.pem .
 EXPOSE 5000
 CMD ["node", "server.js"]
