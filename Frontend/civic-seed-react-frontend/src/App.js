@@ -1,10 +1,9 @@
 import './App.css';
+import Register from './Auth/Register';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Civic Seed</h1>
-    </div>
+    <Register/>
   );
 }
 
