@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-import './App.css';
-import Register from './Auth/Register';
-
-function App() {
-  return (
-    <Register/>
-=======
 import React from "react";
 //import logo from './logo.svg'; //will use this later
 import "./App.css";
@@ -21,7 +13,6 @@ function App() {
         <Route path="/ideas" element={<IdeaPage />} />
       </Routes>
     </BrowserRouter>
->>>>>>> 37905b84a10bf14bd24cd0aba973f36f762b53e4
   );
 }
 export default App;
