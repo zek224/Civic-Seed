@@ -1,7 +1,8 @@
 const express = require("express");
 const dbo = require("../db/conn");
 const db_connect = dbo.getDb();
-
+const MongoClient = require('mongodb').MongoClient;
+const uri = "your_mongodb_connection_string"; // Replace with your actual connection string
 const ideasRouter = express.Router();
 
 
@@ -46,7 +47,7 @@ ideasRouter.get('/ideas-officials', async (req, res) => {
       await client.connect();
       const collection = client.db("your_db_name").collection("ideas"); // replace 'your_db_name' with your actual database name
       // Fetch all ideas where 'hidden' is False and 'fundable' is False. Assuming they are stored as booleans, not strings.
-      const ideas = await collection.find({ hidden: false, fundable: false }).toArray();
+      const ideas = await collection.find({ hidden: false}).toArray();
       res.json(ideas);
     } catch (e) {
       console.error('Error fetching ideas:', e);
