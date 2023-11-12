@@ -79,7 +79,7 @@ const IdeaPageResident = () => {
               <ThumbUpAltIcon sx={{ fontSize: '3rem' }} />
             </IconButton>
             <IconButton
-              color="secondaryy"
+              color="secondary"
               sx={{ 
                 flex: 0.75, 
                 maxHeight: '100%', 
