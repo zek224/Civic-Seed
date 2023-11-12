@@ -1,4 +1,3 @@
-// Navbar.js
 import React from "react";
 import { Link } from "react-router-dom";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -8,11 +7,11 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 
-const NavBarResident = () => {
+const NavBarAdmin = () => {
   return (
     <>
       <CssBaseline />
-      <AppBar position="static">
+      <AppBar position="static" style={{ backgroundColor: '#2a7e19' }}>
         <Toolbar>
           <div
             style={{
@@ -23,17 +22,14 @@ const NavBarResident = () => {
             }}
           >
             <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
-            <Link to="/reportedideas" style={{ textDecoration: "none", color: "white" }}>
+              <Link to="/reportedideas" style={{ textDecoration: "none", color: "white" }}>
                 <Button color="inherit">Reported Ideas</Button>
               </Link>
-            <Link to="/myideasadmin" style={{ textDecoration: "none", color: "white" }}>
+              <Link to="/myideasadmin" style={{ textDecoration: "none", color: "white" }}>
                 <Button color="inherit">My ideas</Button>
               </Link>
               <Link to="/adminideas" style={{ textDecoration: "none", color: "white" }}>
                 <Button color="inherit">Browse ideas</Button>
-              </Link>
-              <Link to="/create" style={{ textDecoration: "none", color: "white" }}>
-                <Button color="inherit">Create an idea</Button>
               </Link>
             </div>
             <div style={{ textAlign: "center", flexGrow: 1 }}>
@@ -62,4 +58,4 @@ const NavBarResident = () => {
   );
 };
 
-export default NavBarResident;
+export default NavBarAdmin;
