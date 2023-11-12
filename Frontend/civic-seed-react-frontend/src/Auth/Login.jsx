@@ -1,7 +1,8 @@
 import React from 'react';
 import { Button, TextField, Container, Typography, CssBaseline, Box } from '@mui/material';
 import {Link, useNavigate} from 'react-router-dom';
-import IdeaComponentResident from "Civic-Seed/Frontend/civic-seed-react-frontend/src/Resident/IdeaComponent/IdeaComponentResident.jsx";
+import IdeaComponentResident from "../Resident/IdeaComponent/IdeaComponentResident.jsx";
+
 
 function Login() {
 

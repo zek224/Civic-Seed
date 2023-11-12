@@ -19,7 +19,7 @@ const IdeaPageResident = () => {
           console.error('Failed to fetch ideas');
         }
       } catch(e){
-        console.error('There was an error fetching the ideas', error);
+        console.error('There was an error fetching the ideas', e);
       }
     };
   }, []); // Empty dependency array means this effect will only run once after the initial render
@@ -32,12 +32,11 @@ const IdeaPageResident = () => {
 
   return (
     <>
-      <NavBarResident /> {/* Fixed navbar at the top of the page */}
-      <Box sx={{ overflowY: 'auto', height: 'calc(100vh - 64px)', padding: 2 }}>
-        {/* Subtracting the height of the navbar (adjust the value based on your actual navbar height) */}
+      <NavBarResident />
+      <Box sx={{ overflowY: 'auto', height: 'calc(100vh - 64px)', padding: 2, bgcolor: '#f5f5f5' }}>
         {ideas.map((idea, index) => (
           <Box key={index} sx={{ display: 'flex', marginBottom: 4, height: '50vh' }}>
-            <Card sx={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginRight: 2 }}>
+            <Card sx={{ flex: 1, marginRight: 2, bgcolor: '#AFE1AF', boxShadow: 2, borderRadius: 2, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
               <Chip
                 label={`Approved for funding: ${idea.funded ? 'Yes' : 'No'}`}
                 color={idea.funded ? 'success' : 'error'}
@@ -60,7 +59,7 @@ const IdeaPageResident = () => {
                 <FlagIcon fontSize="large" />
               </IconButton>
             </Card>
-            <Card sx={{ flex: 2, height: '100%', marginRight: 1 }}>
+            <Card sx={{ flex: 2.5, height: '100%', marginRight: 1, bgcolor: '#AFE1AF', boxShadow: 2, borderRadius: 2 }}>
               <CardContent>
                 <Typography variant="h5" sx={{ fontSize: '1.5rem' }}>{idea.title}</Typography>
                 <Typography variant="body1" sx={{ fontSize: '1.2rem' }}>{idea.description}</Typography>
@@ -68,14 +67,26 @@ const IdeaPageResident = () => {
             </Card>
             <IconButton
               color="primary"
-              sx={{ flex: 1, maxHeight: '100%', borderRadius: '20px', boxShadow: 3 }}
+              sx={{ 
+                flex: 0.75, 
+                maxHeight: '100%', 
+                borderRadius: '20px', 
+                boxShadow: 3, 
+                bgcolor: '#AFE1AF' 
+              }} 
               aria-label="vote yes"
             >
               <ThumbUpAltIcon sx={{ fontSize: '3rem' }} />
             </IconButton>
             <IconButton
               color="secondary"
-              sx={{ flex: 1, maxHeight: '100%', borderRadius: '20px', boxShadow: 3 }}
+              sx={{ 
+                flex: 0.75, 
+                maxHeight: '100%', 
+                borderRadius: '20px', 
+                boxShadow: 3, 
+                bgcolor: '#AFE1AF' 
+              }}
               aria-label="vote no"
             >
               <ThumbDownAltIcon sx={{ fontSize: '3rem' }} />
