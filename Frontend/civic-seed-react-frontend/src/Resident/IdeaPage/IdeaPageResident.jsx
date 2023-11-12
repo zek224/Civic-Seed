@@ -38,13 +38,13 @@ const IdeaPageResident = () => {
           <Box key={index} sx={{ display: 'flex', marginBottom: 4, height: '50vh' }}>
             <Card sx={{ flex: 1, marginRight: 2, bgcolor: '#AFE1AF', boxShadow: 2, borderRadius: 2, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
               <Chip
-                label={`Approved for funding: ${idea.funded ? 'Yes' : 'No'}`}
-                color={idea.funded ? 'success' : 'error'}
+                label={`Approved for funding: ${idea.fundable ? 'Yes' : 'No'}`}
+                color={idea.fundable ? 'success' : 'error'}
                 sx={{ marginBottom: 1, fontSize: '1rem' }}
               />
-              {idea.funded && (
+              {idea.fundable && (
                 <Chip
-                  label={`Funding: ${idea.funding}`}
+                  label={`Funding: ${idea.fundingAmount}`}
                   color="primary"
                   sx={{ marginTop: 1, fontSize: '1rem' }}
                 />
