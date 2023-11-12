@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, TextField, Container, Typography, CssBaseline, Box } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 
 function IdeaComponentResident(props) {
 
@@ -11,6 +12,7 @@ function IdeaComponentResident(props) {
     event.preventDefault();
     const apiUrl ='http://localhost:5000';
     const data = new FormData(event.currentTarget);
+    const ideaId = uuidv4();
 
     try {
         const response = await fetch(`${apiUrl}/ideas/create`,{
@@ -19,7 +21,7 @@ function IdeaComponentResident(props) {
                 'Content-Type': 'application/json',  
             },
             body: JSON.stringify({
-                ideaId: randomId(),
+                ideaId: ideaId,
                 username: user,
                 title: data.get('title'),
                 description: data.get('summary'),
