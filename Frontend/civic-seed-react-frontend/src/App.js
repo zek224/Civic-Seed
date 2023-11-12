@@ -17,7 +17,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/register" element={<Register/>} />
-        <Route path="/login" element={<Login/>} />
+        <Route path="/" element={<Login/>} />
         <Route path="/ideas-page-resident" element = {<IdeasPageResident/>} />
         <Route path="/ideas-page-official" element={<IdeasPageOfficial/>} />
         <Route path="/ideas-page-admin" element={<IdeasPageAdmins/>} />
