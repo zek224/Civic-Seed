@@ -3,7 +3,9 @@ import React from "react";
 import "./App.css";
 import Register from "./Auth/Register";
 import Login from "./Auth/Login";
-import Ideas from "./Resident/IdeaPage/IdeaPageResident";
+import IdeasPageResident from "./Resident/IdeaPage/IdeaPageResident";
+import IdeasPageOfficial from "./Govorg/IdeaPage/IdeaPageGovorg";
+import IdeasPageAdmins from "./Admin/IdeaPage/IdeaPageAdmin";
 import IdeasMine from "./Resident/IdeaPage/IdeaPageMine";
 import IdeasAdmin from "./Admin/IdeaPage/IdeaPageAdmin"
 import IdeasGovorg from "./Govorg/IdeaPage/IdeaPageGovorg"
@@ -16,11 +18,15 @@ function App() {
       <Routes>
         <Route path="/register" element={<Register/>} />
         <Route path="/login" element={<Login/>} />
-        <Route path="/ideas" element = {<Ideas/>} />
+        <Route path="/ideas-page-resident" element = {<IdeasPageResident/>} />
+        <Route path="/ideas-page-official" element={<IdeasPageOfficial/>} />
+        <Route path="/ideas-page-admin" element={<IdeasPageAdmins/>} />
+        {/* You can create an idea if you are a resident */}
         <Route path="/create" element = {<MakeIdea/>} />
+        {/* Residents only has MyIdeas */ }
         <Route path="/myideas" element = {<IdeasMine/>} />
-        <Route path="/adminideas" element = {<IdeasAdmin/>} />
-        <Route path="/govorgideas" element = {<IdeasGovorg/>} />
+        {/* <Route path="/adminideas" element = {<IdeasAdmin/>} />
+        <Route path="/govorgideas" element = {<IdeasGovorg/>} /> */}
       </Routes>
     </BrowserRouter>
   );

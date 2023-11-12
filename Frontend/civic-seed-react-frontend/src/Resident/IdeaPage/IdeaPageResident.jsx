@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Box, Card, CardContent, IconButton, Typography, Chip } from '@mui/material';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
@@ -6,11 +6,29 @@ import FlagIcon from '@mui/icons-material/Flag';
 import NavBarResident from '../NavBar/NavBarResident';
 
 const IdeaPageResident = () => {
-  const ideas = [
-    { title: 'Fun Fridays', description: 'Allow for students in grades 1-12 to have half days on Friday', funded: true, funding: '$1000' },
-    { title: 'Idea 2', description: 'Description of Idea 2', funded: false, funding: '$0' },
-    // Add more ideas here
-  ];
+
+  const [ideas, setIdeas] = useState([]); // Initial state is an empty array
+  useEffect(()=>{
+    const fetchIdeas = async () =>{
+      try{
+        const response = await fetch("https://localhost:5000/ideas-officials");
+        if(response.ok){
+          const data = await response.json();
+          setIdeas(data);
+        } else{
+          console.error('Failed to fetch ideas');
+        }
+      } catch(e){
+        console.error('There was an error fetching the ideas', error);
+      }
+    };
+  }, []); // Empty dependency array means this effect will only run once after the initial render
+  
+  // const ideas = [
+  //   { title: 'Fun Fridays', description: 'Allow for students in grades 1-12 to have half days on Friday', funded: true, funding: '$1000' },
+  //   { title: 'Idea 2', description: 'Description of Idea 2', funded: false, funding: '$0' },
+  //   // Add more ideas here
+  // ];
 
   return (
     <>
