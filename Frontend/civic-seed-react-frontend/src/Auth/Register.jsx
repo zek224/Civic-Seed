@@ -11,9 +11,9 @@ export default function Register(){
     event.preventDefault(); // Prevent default form submission behavior 
     const data = new FormData(event.currentTarget); // Create FormData from the current form target
 
-    const apiUrl ='http://localhost:5000';
+    const apiUrl ='http://localhost:5000/signup';
     try {
-        const response = await fetch(`${apiUrl}localhost/signup`, { // Make sure to use your backend server URL if it's not the same origin
+        const response = await fetch(apiUrl, { // Make sure to use your backend server URL if it's not the same origin
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

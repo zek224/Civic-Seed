@@ -21,10 +21,14 @@ function IdeaComponentResident(props) {
             body: JSON.stringify({
                 ideaId: randomId(),
                 username: user,
-                type: 0,
                 title: data.get('title'),
                 description: data.get('summary'),
-                reported: false
+                bloom: 0,
+                wither:0,
+                reports: 0,
+                hidden: false,
+                fundable: false,
+                fundingAmount: 0
             }),
         });
 
