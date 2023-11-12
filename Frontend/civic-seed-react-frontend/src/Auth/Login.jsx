@@ -3,14 +3,57 @@ import { Button, TextField, Container, Typography, CssBaseline, Box } from '@mui
 import {Link} from 'react-router-dom';
 
 function Login() {
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    // Implement login logic here
-    console.log({
-      username: data.get('username'),
-      password: data.get('password'),
-    });
+
+    const loginUrl ='http://localhost:5000/login'; 
+
+
+    try{
+        let response = await fetch(loginUrl, {
+            method: 'POST',
+            headers:{
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                usr: data.get("username"),
+                pwd: data.get("password"),
+            }),
+        });
+
+        if(response.ok){
+            // Assuming login returns some user data or a token to make subsequent requests
+            let loginResult = await response.json();
+            // You can log the result of login here if needed
+            console.log(loginResult);
+            // Now fetch the user data - replace '/getUserData' with your actual API endpoint
+            const userDataUrl = 'http://localhost:5000/getUserData'; // Endpoint to get user data
+            response = await fetch(userDataUrl,{
+                method: 'GET',
+                headers:{
+                    // You may need to include authorization headers depending on your backend
+                    'Authorization': `Bearer ${loginResult.token}`, // Example authorization header
+                }
+            });
+
+            if(response.ok){
+                const userData = await response.json();
+                console.log({
+                    username: userData.usr,
+                    zipcode: userData.zipcode,
+                    type: userData.type,
+                });
+            } else{
+                 // Handle errors if the second request was not successful
+                console.error('Failed to fetch user data.');
+            }
+        } else{
+            console.log("Login failed");
+        }
+    }catch(error){
+        console.log("There was an error",error);
+    }
   };
 
   return (
