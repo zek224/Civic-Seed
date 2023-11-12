@@ -2,6 +2,13 @@
 
 Civic Seed, "Growing Change, Cultivating Communities."
 
+
+## Presentation Link
+https://docs.google.com/presentation/d/1hvMN8yT33XJfJ3zB7nIGo-f6oOc7UHWzYBOIoym3B7M/edit?usp=sharing
+
+## Video Link
+https://drive.google.com/file/d/1_7bWkTFiYMbnOnvAD26_kBGgRchgE6_Q/view?usp=sharing
+
 Implemented a MERN Stack
 
 Samir Hassan
@@ -97,7 +104,7 @@ Form for submitting new projects with title, description, images, budget, timeli
 - Backend control for app administrators to manage content, monitor activity, and handle disputes.
 
 
-Basic Outline
+## Draft One Project Charter
 Here's a structured approach to building your "Neighborhood Micro-Grants" web application with AWS, detailing the app's features, design considerations, and AWS services that could be utilized. (CIVIC SEED)
 
 ### App Features:
@@ -172,3 +179,6 @@ Here's a structured approach to building your "Neighborhood Micro-Grants" web ap
 - **AWS CodePipeline:** For continuous integration and continuous delivery service.
 
 By using the aforementioned features and AWS services, you can create a comprehensive and scalable web application that facilitates community improvement initiatives through micro-grants and active local engagement.
+
+
+
