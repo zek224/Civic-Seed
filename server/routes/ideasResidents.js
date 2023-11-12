@@ -7,7 +7,7 @@ const ideasRouter = express.Router();
 
 /**this route will deal with creating an idea */
 
-router.post('/ideas/create',async (req, res) => {
+ideasRouter.post('/ideas/create',async (req, res) => {
   try {
     // Replace 'db' with your actual database interface or ORM method
     const idea = await db.collection('ideas').insertOne({
@@ -38,6 +38,23 @@ router.post('/ideas/create',async (req, res) => {
 });
 
 
+
+ideasRouter.get('/ideas-officials', async (req, res) => {
+    const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+    
+    try {
+      await client.connect();
+      const collection = client.db("your_db_name").collection("ideas"); // replace 'your_db_name' with your actual database name
+      // Fetch all ideas where 'hidden' is False and 'fundable' is False. Assuming they are stored as booleans, not strings.
+      const ideas = await collection.find({ hidden: false, fundable: false }).toArray();
+      res.json(ideas);
+    } catch (e) {
+      console.error('Error fetching ideas:', e);
+      res.status(500).json({ message: 'Error fetching ideas' });
+    } finally {
+      await client.close();
+    }
+  });
 
 
 
