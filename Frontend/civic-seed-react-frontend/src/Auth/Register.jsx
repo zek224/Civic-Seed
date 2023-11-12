@@ -21,6 +21,7 @@ export default function Register(){
         // Convert form data to JSON
         body: JSON.stringify({
             user: data.get('username'),
+            name: data.get('name'),
             pwd: data.get('password'),
             zip: data.get('zipcode'),
             type: userType
@@ -35,12 +36,12 @@ export default function Register(){
         } else {
         // Handle errors if response from server is not 'ok' (e.g., 400 or 500 status codes)
         const errorResult = await response.json();
-        console.log(errorResult);
+        alert("Error from server: " + errorResult);
         // Display error message from server or generic error message
         }
     } catch (error) {
         // Handle network errors or other unforeseen errors
-        console.error('There was an error!', error);
+       alert("There was a network error: " + error.message);
     }
 };
 
@@ -61,6 +62,18 @@ export default function Register(){
           Sign up
         </Typography>
         <form onSubmit={handleSubmit} noValidate>
+
+            <TextField
+            margin="normal"
+            required
+            fullWidth
+            id="name"
+            label="Full Name"
+            name="name"
+            autoComplete="name"
+            autoFocus
+            />
+        
           <TextField
             margin="normal"
             required
@@ -90,13 +103,12 @@ export default function Register(){
             name="zipcode"
             autoComplete="postal-code"
           />
-
         <FormControl component="fieldset" sx={{ mt: 2 }}>
                 <FormLabel component="legend">User Type</FormLabel>
                 <RadioGroup row aria-label="user-type" name="user-type" value={userType} onChange={handleUserTypeChange}>
                     <FormControlLabel value="residents" control={<Radio />} label="Resident" />
                     <FormControlLabel value="officials" control={<Radio />} label="Official" />
-                    <FormControlLabel value="admins" control={<Radio />} label="Admin" />
+                    {/* <FormControlLabel value="admins" control={<Radio />} label="Admin" /> */}
                 </RadioGroup>
         </FormControl>
           <Button

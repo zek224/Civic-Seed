@@ -45,11 +45,12 @@ function Login() {
                     type: userData.type,
                 });
             } else{
-                 // Handle errors if the second request was not successful
-                console.error('Failed to fetch user data.');
+                 // Incorrect username or password
+                 alert("Incorrect username or password. Please try again.");
             }
         } else{
-            console.log("Login failed");
+            // Network error
+            alert("There was an error processing your login. Please try again.");
         }
     }catch(error){
         console.log("There was an error",error);
