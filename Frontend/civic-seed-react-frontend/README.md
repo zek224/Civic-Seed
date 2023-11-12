@@ -1,70 +1,32 @@
-# Getting Started with Create React App
+Civic Seed, "Growing Change, Cultivating Communities."
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Implemented a MERN
 
-## Available Scripts
+Samir Hassan
+Tasawar Saraf
+Ayush Shah
+Zeeshan Khan
+Arnav Chokshi
 
-In the project directory, you can run:
+Project description:
 
-### `npm start`
+Our web application can be used by three different types of persons: Governments/organizations, community residents, and administrative body.
+The purpose of our application is to facilitate community-driven projects by providing a space for residents, local businesses, and municipal representatives to collaborate. The platform includes features for user registration, project proposal submission, community voting, sponsorship opportunities, real-time funding tracking, community interaction, reporting, and administrative control.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Most updated version:
+Community residents can …
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Administrative bodies can…
 
-### `npm test`
+Governments/organizations can…
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+How our data was created:
+Realistic data was created using Mockaroo. We made sure to match data on which users liked which posts and the blooms and withers. We acquired real Lehigh Valley zipcodes using https://www.zillow.com/browse/homes/pa/lehigh-county/. Our ER diagram included four different tables consisting of Interactions, Users, Ideas, and Funding. 
+The Interactions table keeps track of the interactions made on a post such as if it was reported, liked, disliked, and on what post by which user.
+The Users table keeps track of the users and the usual data while also keeping track of the type of user.
+The Funding table keeps track of which government official has funded which project. This helps us with real-time tracking of funding data.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Amazon Web Services used:
+DocumentDB
+Docker
