@@ -1,17 +1,59 @@
 import React from 'react';
 import { Button, TextField, Container, Typography, CssBaseline, Box } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-function IdeaComponentResident() {
-  const handleSubmit = (event) => {
+function IdeaComponentResident(props) {
+
+    const navigate = useNavigate();
+    const { user } = props; // Destructure user from props
+
+  const handleSubmit = async(event) =>{
     event.preventDefault();
+    const apiUrl ='http://localhost:5000';
     const data = new FormData(event.currentTarget);
-    // Implement post creation logic here
-    console.log({
-      title: data.get('title'),
-      summary: data.get('summary'),
-    });
-  };
+
+    try {
+        const response = await fetch(`${apiUrl}/ideas/create`,{
+            method: 'POST',
+            header:{
+                'Content-Type': 'application/json',  
+            },
+            body: JSON.stringify({
+                ideaId: randomId(),
+                username: user,
+                type: 0,
+                title: data.get('title'),
+                description: data.get('summary'),
+                reported: false
+            }),
+        });
+
+        if(response.ok){
+            // Handle a successful response from the server
+            // You might want to clear the form or show a success message
+            alert("Idea created successfully!");
+            // Redirect to the ideas list or another appropriate page
+            navigate('/ideas-page-residents'); // Adjust the route as needed
+        } else{
+            // Handle errors if the server response is not 'ok'
+            // This could be due to validation or other server-side errors
+            const errorResult = await response.json();
+            alert(`Error creating idea: ${errorResult.message}`);
+        }
+    }catch(error){
+        alert(`There was an error submitting the idea: ${error.message}`);
+    };
+  }
+
+//   const handleSubmit = (event) => {
+//     event.preventDefault();
+//     const data = new FormData(event.currentTarget);
+//     // Implement post creation logic here
+//     console.log({
+//       title: data.get('title'),
+//       summary: data.get('summary'),
+//     });
+//   };
 
   return (
     <Container component="main" maxWidth="xs">
@@ -47,10 +89,10 @@ function IdeaComponentResident() {
             fullWidth
             multiline
             rows={4}
-            name="summary"
-            label="Summary"
-            type="summary"
-            id="summary"
+            name="description"
+            label="Description"
+            type="description"
+            id="description"
           />
           <Button
             type="submit"
@@ -62,7 +104,7 @@ function IdeaComponentResident() {
           </Button>
 
           <Box textAlign="center">
-            <Link to="/ideas" style={{ textDecoration: 'none' }}>
+            <Link to="/ideas-resident" style={{ textDecoration: 'none' }}>
               <Button variant="text">
                 Back to Ideas
               </Button>

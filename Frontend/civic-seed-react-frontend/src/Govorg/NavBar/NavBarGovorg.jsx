@@ -26,7 +26,7 @@ const NavBarGovorg = () => {
             <Link to="/reportedideas" style={{ textDecoration: "none", color: "white" }}>
                 <Button color="inherit">Funded ideas</Button>
               </Link>
-              <Link to="/adminideas" style={{ textDecoration: "none", color: "white" }}>
+              <Link to="/ideas-page-official" style={{ textDecoration: "none", color: "white" }}>
                 <Button color="inherit">Browse ideas</Button>
               </Link>
             </div>

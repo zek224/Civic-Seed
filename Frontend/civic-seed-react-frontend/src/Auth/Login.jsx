@@ -1,14 +1,17 @@
 import React from 'react';
 import { Button, TextField, Container, Typography, CssBaseline, Box } from '@mui/material';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
+import IdeaComponentResident from "../Resident/IdeaComponent/IdeaComponentResident.jsx";
+
 
 function Login() {
+
+  const navigate = useNavigate();
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
 
     const loginUrl ='http://localhost:5000/login'; 
-
 
     try{
         let response = await fetch(loginUrl, {
@@ -17,7 +20,7 @@ function Login() {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                usr: data.get("username"),
+                user: data.get("username"),
                 pwd: data.get("password"),
             }),
         });
@@ -27,27 +30,45 @@ function Login() {
             let loginResult = await response.json();
             // You can log the result of login here if needed
             console.log(loginResult);
-            // Now fetch the user data - replace '/getUserData' with your actual API endpoint
-            const userDataUrl = 'http://localhost:5000/getUserData'; // Endpoint to get user data
-            response = await fetch(userDataUrl,{
-                method: 'GET',
-                headers:{
-                    // You may need to include authorization headers depending on your backend
-                    'Authorization': `Bearer ${loginResult.token}`, // Example authorization header
-                }
-            });
 
-            if(response.ok){
-                const userData = await response.json();
-                console.log({
-                    username: userData.usr,
-                    zipcode: userData.zipcode,
-                    type: userData.type,
-                });
-            } else{
-                 // Incorrect username or password
-                 alert("Incorrect username or password. Please try again.");
+            // grab the type parameter from the loginResult object
+            const userType = loginResult.type;
+
+            const userName = loginResult.user;
+
+             // Navigate based on user type
+            if(userType === 'resident') {
+                <IdeaComponentResident user={userName}/>
+                navigate('/ideas-page-resident');
+            } else if(userType === 'official') {
+                navigate('/ideas-page-official');
+            } else {
+                navigate("/ideas-page-admin");
             }
+
+            // // Now fetch the user data - replace '/getUserData' with your actual API endpoint
+            // const userDataUrl = 'http://localhost:5000/getUserData'; // Endpoint to get user data
+            // response = await fetch(userDataUrl,{
+            //     method: 'GET',
+            //     headers:{
+            //         // You may need to include authorization headers depending on your backend
+            //         'Authorization': `Bearer ${loginResult.token}`, // Example authorization header
+            //     }
+            // });
+
+
+
+            // if(response.ok){
+            //     const userData = await response.json();
+            //     console.log({
+            //         username: userData.usr,
+            //         zipcode: userData.zipcode,
+            //         type: userData.type,
+            //     });
+            // } else{
+            //      // Incorrect username or password
+            //      alert("Incorrect username or password. Please try again.");
+            // }
         } else{
             // Network error
             alert("There was an error processing your login. Please try again.");

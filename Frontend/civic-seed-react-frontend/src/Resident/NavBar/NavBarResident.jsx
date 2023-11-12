@@ -1,57 +1,54 @@
-// Navbar.js
 import React from "react";
 import { Link } from "react-router-dom";
 import CssBaseline from "@mui/material/CssBaseline";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
 import TextField from "@mui/material/TextField";
+import Tooltip from "@mui/material/Tooltip";
+import AddIcon from '@mui/icons-material/Add';
 
 const NavBarResident = () => {
   return (
     <>
       <CssBaseline />
-      <AppBar position="static">
-        <Toolbar>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              width: "100%",
-            }}
-          >
-            <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
+      <AppBar position="static" style={{ backgroundColor: '#2a7e19' }}> {/* Light green color */}
+        <Toolbar style={{ justifyContent: "space-between" }}>
+          <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
             <Link to="/myideas" style={{ textDecoration: "none", color: "white" }}>
-                <Button color="inherit">My ideas</Button>
+              <IconButton color="inherit">My ideas</IconButton>
+            </Link>
+            <Link to="/ideas" style={{ textDecoration: "none", color: "white" }}>
+              <IconButton color="inherit">Browse ideas</IconButton>
+            </Link>
+          </div>
+
+          <Typography variant="h6" component="div" style={{ color: "white", flexGrow: 1, textAlign: "center", fontSize: '1.8rem' }}>
+            CivicSeed
+          </Typography>
+
+          <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
+            <Link to="/myVotes" style={{ textDecoration: "none", color: "white" }}>
+              <IconButton color="inherit">See my Votes</IconButton>
+            </Link>
+            <Tooltip title="Create new idea">
+              <Link to="/create" style={{ color: "white" }}>
+                <IconButton color="inherit">
+                  <AddIcon />
+                </IconButton>
               </Link>
-              <Link to="/ideas" style={{ textDecoration: "none", color: "white" }}>
-                <Button color="inherit">Browse ideas</Button>
-              </Link>
-              <Link to="/create" style={{ textDecoration: "none", color: "white" }}>
-                <Button color="inherit">Create an idea</Button>
-              </Link>
-            </div>
-            <div style={{ textAlign: "center", flexGrow: 1 }}>
-              <Typography variant="h6" component="div" style={{ color: "white" }}>
-                CivicSeed
-              </Typography>
-            </div>
-            <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-              <div style={{ cursor: "pointer" }}>
-                <span role="img" aria-label="Search Icon">
-                  🔍
-                </span>
-              </div>
-              <TextField
-                id="outlined-search"
-                label="Search"
-                type="search"
-                variant="outlined"
-                size="small"
-              />
-            </div>
+            </Tooltip>
+            <span role="img" aria-label="Search Icon" style={{ cursor: "pointer" }}>
+              🔍
+            </span>
+            <TextField
+              id="outlined-search"
+              label="Search"
+              type="search"
+              variant="outlined"
+              size="small"
+            />
           </div>
         </Toolbar>
       </AppBar>
