@@ -1,19 +1,55 @@
-import React from "react";
-import { Button, TextField, Container, Typography, Box } from '@mui/material';
+import React, {useState} from "react";
+import { Button, TextField, Container, Typography, Box, FormControlLabel, FormControl, FormLabel, Radio, RadioGroup } from '@mui/material';
 import { Link } from "react-router-dom";
 
 export default function Register(){
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        // Here you can call an API or perform a sign-up logic
-        console.log({
-          username: data.get('username'),
-          email: data.get('email'),
-          password: data.get('password'),
-          zipcode: data.get('zipcode'),
+   // Use fetch to post data to your backend
+   const [userType, setUserType] = useState('residents'); // Default to 'residents'
+
+   const handleSubmit = async (event) =>{
+
+    event.preventDefault(); // Prevent default form submission behavior 
+    const data = new FormData(event.currentTarget); // Create FormData from the current form target
+
+    const apiUrl ='http://localhost:5000';
+    try {
+        const response = await fetch(`${apiUrl}localhost/signup`, { // Make sure to use your backend server URL if it's not the same origin
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        // Convert form data to JSON
+        body: JSON.stringify({
+            user: data.get('username'),
+            pwd: data.get('password'),
+            zip: data.get('zipcode'),
+            type: userType
+        }),
         });
-      };
+
+        if (response.ok) {
+        // Handle a successful response from the server
+        const result = await response.json();
+        console.log(result);
+        // Redirect to login or other actions on success
+        } else {
+        // Handle errors if response from server is not 'ok' (e.g., 400 or 500 status codes)
+        const errorResult = await response.json();
+        console.log(errorResult);
+        // Display error message from server or generic error message
+        }
+    } catch (error) {
+        // Handle network errors or other unforeseen errors
+        console.error('There was an error!', error);
+    }
+};
+
+
+ // Handle change in radio group
+ const handleUserTypeChange = (event) => {
+    setUserType(event.target.value);
+  };
+
 
       return(
        
@@ -39,15 +75,6 @@ export default function Register(){
             margin="normal"
             required
             fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
-          />
-          <TextField
-            margin="normal"
-            required
-            fullWidth
             name="password"
             label="Password"
             type="password"
@@ -63,6 +90,15 @@ export default function Register(){
             name="zipcode"
             autoComplete="postal-code"
           />
+
+        <FormControl component="fieldset" sx={{ mt: 2 }}>
+                <FormLabel component="legend">User Type</FormLabel>
+                <RadioGroup row aria-label="user-type" name="user-type" value={userType} onChange={handleUserTypeChange}>
+                    <FormControlLabel value="residents" control={<Radio />} label="Resident" />
+                    <FormControlLabel value="officials" control={<Radio />} label="Official" />
+                    <FormControlLabel value="admins" control={<Radio />} label="Admin" />
+                </RadioGroup>
+        </FormControl>
           <Button
             type="submit"
             fullWidth
