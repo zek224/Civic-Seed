@@ -19,7 +19,7 @@ const NavBarResident = () => {
             <Link to="/myideas" style={{ textDecoration: "none", color: "white" }}>
               <IconButton color="inherit">My ideas</IconButton>
             </Link>
-            <Link to="/ideas" style={{ textDecoration: "none", color: "white" }}>
+            <Link to="/ideas-page-resident" style={{ textDecoration: "none", color: "white" }}>
               <IconButton color="inherit">Browse ideas</IconButton>
             </Link>
           </div>

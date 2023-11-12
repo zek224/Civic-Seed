@@ -1,12 +1,12 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import { Box, Card, CardContent, IconButton, Typography, Chip } from '@mui/material';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
 import FlagIcon from '@mui/icons-material/Flag';
-import NavBarResident from '../NavBar/NavBarResident';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import NavBarGovorg from '../NavBar/NavBarGovorg';
 
-const IdeaPageResident = () => {
-
+const IdeaPageGovorg = () => {
   // const [ideas, setIdeas] = useState([]); // Initial state is an empty array
   // useEffect(()=>{
   //   const fetchIdeas = async () =>{
@@ -23,20 +23,28 @@ const IdeaPageResident = () => {
   //     }
   //   };
   // }, []); // Empty dependency array means this effect will only run once after the initial render
+
+
   
   const ideas = [
     { title: 'Fun Fridays', description: 'Allow for students in grades 1-12 to have half days on Friday', fundable: true, fundingAmount: '$1000' },
-    { title: 'Idea 2', description: 'Description of Idea 2', funded: false, funding: '$0' },
+    { title: 'Idea 2', description: 'Description of Idea 2', fundable: false, fundingAmount: '$0' },
+    {title: 'Idea 3', description: 'Description of Idea 3', fundable: true, fundingAmount: '$100'},
+    {title: 'Idea 3', description: 'Description of Idea 3', fundable: false, fundingAmount: '$100'},
     // Add more ideas here
   ];
 
+  // Filter for fundable ideas
+  const fundableIdeas = ideas.filter(idea => idea.fundable);
+
   return (
     <>
-      <NavBarResident />
-      <Box sx={{ overflowY: 'auto', height: 'calc(100vh - 64px)', padding: 2, bgcolor: '#f5f5f5' }}>
-        {ideas.map((idea, index) => (
+      <NavBarGovorg /> {/* Fixed navbar at the top of the page */}
+      <Box sx={{ overflowY: 'auto', height: 'calc(100vh - 64px)', padding: 2 }}>
+        {/* Subtracting the height of the navbar (adjust the value based on your actual navbar height) */}
+        {fundableIdeas.map((idea, index) => (
           <Box key={index} sx={{ display: 'flex', marginBottom: 4, height: '50vh' }}>
-            <Card sx={{ flex: 1, marginRight: 2, bgcolor: '#AFE1AF', boxShadow: 2, borderRadius: 2, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+            <Card sx={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginRight: 2 }}>
               <Chip
                 label={`Approved for funding: ${idea.fundable ? 'Yes' : 'No'}`}
                 color={idea.fundable ? 'success' : 'error'}
@@ -58,8 +66,21 @@ const IdeaPageResident = () => {
               >
                 <FlagIcon fontSize="large" />
               </IconButton>
+              <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mt: 1 }}>
+                <IconButton
+                  color="primary"
+                  aria-label="fund"
+                  size="large"
+                  onClick={() => console.log(`Add funding for idea "${idea.title}" clicked`)}
+                >
+                  <AttachMoneyIcon fontSize="large" />
+                </IconButton>
+                <Typography variant="body2" color="primary">
+                  Add Funding
+                </Typography>
+              </Box>
             </Card>
-            <Card sx={{ flex: 2.5, height: '100%', marginRight: 1, bgcolor: '#AFE1AF', boxShadow: 2, borderRadius: 2 }}>
+            <Card sx={{ flex: 2, height: '100%', marginRight: 1 }}>
               <CardContent>
                 <Typography variant="h5" sx={{ fontSize: '1.5rem' }}>{idea.title}</Typography>
                 <Typography variant="body1" sx={{ fontSize: '1.2rem' }}>{idea.description}</Typography>
@@ -67,26 +88,14 @@ const IdeaPageResident = () => {
             </Card>
             <IconButton
               color="primary"
-              sx={{ 
-                flex: 0.75, 
-                maxHeight: '100%', 
-                borderRadius: '20px', 
-                boxShadow: 3, 
-                bgcolor: '#AFE1AF' 
-              }} 
+              sx={{ flex: 1, maxHeight: '100%', borderRadius: '20px', boxShadow: 3 }}
               aria-label="vote yes"
             >
               <ThumbUpAltIcon sx={{ fontSize: '3rem' }} />
             </IconButton>
             <IconButton
               color="secondary"
-              sx={{ 
-                flex: 0.75, 
-                maxHeight: '100%', 
-                borderRadius: '20px', 
-                boxShadow: 3, 
-                bgcolor: '#AFE1AF' 
-              }}
+              sx={{ flex: 1, maxHeight: '100%', borderRadius: '20px', boxShadow: 3 }}
               aria-label="vote no"
             >
               <ThumbDownAltIcon sx={{ fontSize: '3rem' }} />
@@ -98,4 +107,4 @@ const IdeaPageResident = () => {
   );
 };
 
-export default IdeaPageResident;
+export default IdeaPageGovorg;

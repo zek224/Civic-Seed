@@ -14,7 +14,7 @@ const NavBarGovorg = () => {
       <AppBar position="static" style={{ backgroundColor: '#2a7e19' }}>
         <Toolbar style={{ justifyContent: "space-between" }}>
           <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
-            <Link to="/reportedideas" style={{ textDecoration: "none", color: "white" }}>
+            <Link to="/funded-ideas" style={{ textDecoration: "none", color: "white" }}>
                 <Button color="inherit">Funded ideas</Button>
             </Link>
             <Link to="/ideas-page-official" style={{ textDecoration: "none", color: "white" }}>

@@ -72,7 +72,7 @@ async def get_users(request: Request):
         raise HTTPException(status_code=500, detail=str(e))
 
 # Mount the static directory
-app.mount("/static", StaticFiles(directory="/app/build/static"), name="static")
+app.mount("/static", StaticFiles(directory="build/static"), name="static")
 
 @app.get("/{catchall:path}", response_class=HTMLResponse)
 async def catch_all(request: Request, catchall: str):
@@ -81,7 +81,7 @@ async def catch_all(request: Request, catchall: str):
 
 def main():
     print("Starting up...")
-    uvicorn.run(app, host="0.0.0.0", port=5000)
+    uvicorn.run(app, host="0.0.0.0", port=5001)
 
 
 if __name__ == "__main__":
