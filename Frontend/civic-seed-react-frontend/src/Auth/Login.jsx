@@ -36,10 +36,9 @@ function Login() {
 
             const userName = loginResult.user;
 
-
-            <IdeaComponentResident user={userName}/>
              // Navigate based on user type
             if(userType === 'resident') {
+                <IdeaComponentResident user={userName}/>
                 navigate('/ideas-page-resident');
             } else if(userType === 'official') {
                 navigate('/ideas-page-official');

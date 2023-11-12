@@ -19,9 +19,12 @@ function IdeaComponentResident(props) {
                 'Content-Type': 'application/json',  
             },
             body: JSON.stringify({
+                ideaId: randomId(),
                 username: user,
+                type: 0,
                 title: data.get('title'),
                 description: data.get('summary'),
+                reported: false
             }),
         });
 
