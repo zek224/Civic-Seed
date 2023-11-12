@@ -6,6 +6,7 @@ import Login from "./Auth/Login";
 import Ideas from "./Resident/IdeaPage/IdeaPageResident";
 import IdeasMine from "./Resident/IdeaPage/IdeaPageMine";
 import IdeasAdmin from "./Admin/IdeaPage/IdeaPageAdmin"
+import IdeasGovorg from "./Govorg/IdeaPage/IdeaPageGovorg"
 import MakeIdea from "./Resident/IdeaComponent/IdeaComponentResident"
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
@@ -19,6 +20,7 @@ function App() {
         <Route path="/create" element = {<MakeIdea/>} />
         <Route path="/myideas" element = {<IdeasMine/>} />
         <Route path="/adminideas" element = {<IdeasAdmin/>} />
+        <Route path="/govorgideas" element = {<IdeasGovorg/>} />
       </Routes>
     </BrowserRouter>
   );
