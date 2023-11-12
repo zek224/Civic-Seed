@@ -10,7 +10,7 @@ import IdeasMine from "./Resident/IdeaPage/IdeaPageMine";
 import IdeasAdmin from "./Admin/IdeaPage/IdeaPageAdmin"
 import IdeasGovorg from "./Govorg/IdeaPage/IdeaPageGovorg"
 import MakeIdea from "./Resident/IdeaComponent/IdeaComponentResident"
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigation } from "react-router-dom";
 
 function App() {
   return (
@@ -27,6 +27,8 @@ function App() {
         <Route path="/myideas" element = {<IdeasMine/>} />
         {/* <Route path="/adminideas" element = {<IdeasAdmin/>} />
         <Route path="/govorgideas" element = {<IdeasGovorg/>} /> */}
+        {/* default Navigate to /login */}
+        <Route path="/" element={<Login/>} />
       </Routes>
     </BrowserRouter>
   );

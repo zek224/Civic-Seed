@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ideas List</title>
+</head>
+<body>
+    <h1>Ideas</h1>
+    {% if ideas %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Username</th>
+                    <th>Description</th>
+                    <th>Bloom</th>
+                    <th>Wither</th>
+                    <th>Reports</th>
+                    <th>Hidden</th>
+                    <th>Fundable</th>
+                    <th>Funding Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for idea in ideas %}
+                    <tr>
+                        <td>{{ idea.title }}</td>
+                        <td>{{ idea.username }}</td>
+                        <td>{{ idea.description }}</td>
+                        <td>{{ idea.bloom }}</td>
+                        <td>{{ idea.wither }}</td>
+                        <td>{{ idea.reports }}</td>
+                        <td>{{ idea.hidden }}</td>
+                        <td>{{ idea.fundable }}</td>
+                        <td>${{ idea.fundingAmount }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No ideas found.</p>
+    {% endif %}
+</body>
+</html>
