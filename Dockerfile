@@ -10,7 +10,7 @@ RUN npm run build
 FROM node:latest
 WORKDIR /server
 COPY server/package*.json ./
-RUN npm install
+RUN npm install --fetch-retries=5 --fetch-retry-factor=2 --fetch-retry-mintimeout=1000 --verbose
 
 # copy the built react
 COPY --from=build-stage /app/build /server/public
