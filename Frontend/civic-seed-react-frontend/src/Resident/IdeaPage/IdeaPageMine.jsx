@@ -2,9 +2,11 @@ import React from 'react';
 import { Box, Card, CardContent, IconButton, Typography, Chip } from '@mui/material';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
+import FlagIcon from '@mui/icons-material/Flag';
+import DeleteIcon from '@mui/icons-material/Delete';
 import NavBarResident from '../NavBar/NavBarResident';
 
-const IdeaPageResident = () => {
+const IdeaPageMine = () => {
   const ideas = [
     { title: 'Fun Fridays', description: 'Allow for students in grades 1-12 to have half days on Friday', funded: true, funding: '$1000' },
     { title: 'Idea 2', description: 'Description of Idea 2', funded: false, funding: '$0' },
@@ -20,14 +22,35 @@ const IdeaPageResident = () => {
           <Box key={index} sx={{ display: 'flex', marginBottom: 4, height: '50vh' }}>
             <Card sx={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginRight: 2 }}>
               <Chip
-                label={`Funded: ${idea.funded ? 'Yes' : 'No'}`}
+                label={`Approved for funding: ${idea.funded ? 'Yes' : 'No'}`}
                 color={idea.funded ? 'success' : 'error'}
-                sx={{ marginBottom: 1 }}
+                sx={{ marginBottom: 1, fontSize: '1rem' }}
               />
-              <Chip
-                label={`Funding: ${idea.funding}`}
-                color="primary"
-              />
+              {idea.funded && (
+                <Chip
+                  label={`Funding: ${idea.funding}`}
+                  color="primary"
+                  sx={{ marginTop: 1, fontSize: '1rem' }}
+                />
+              )}
+              <IconButton
+                color="secondary"
+                sx={{ mt: 2 }}
+                aria-label="report"
+                size="large"
+                onClick={() => console.log(`Report for idea "${idea.title}" clicked`)}
+              >
+                <FlagIcon fontSize="large" />
+              </IconButton>
+              <IconButton
+                color="error"
+                sx={{ mt: 1 }}
+                aria-label="delete"
+                size="large"
+                onClick={() => console.log(`Delete idea "${idea.title}" clicked`)}
+              >
+                <DeleteIcon fontSize="large" />
+              </IconButton>
             </Card>
             <Card sx={{ flex: 2, height: '100%', marginRight: 1 }}>
               <CardContent>
@@ -56,4 +79,4 @@ const IdeaPageResident = () => {
   );
 };
 
-export default IdeaPageResident;
+export default IdeaPageMine;

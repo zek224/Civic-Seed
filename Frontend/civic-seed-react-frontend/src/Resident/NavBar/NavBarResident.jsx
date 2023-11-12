@@ -23,14 +23,14 @@ const NavBarResident = () => {
             }}
           >
             <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
+            <Link to="/myideas" style={{ textDecoration: "none", color: "white" }}>
+                <Button color="inherit">My ideas</Button>
+              </Link>
               <Link to="/ideas" style={{ textDecoration: "none", color: "white" }}>
                 <Button color="inherit">Browse ideas</Button>
               </Link>
               <Link to="/create" style={{ textDecoration: "none", color: "white" }}>
                 <Button color="inherit">Create an idea</Button>
-              </Link>
-              <Link to="/myideas" style={{ textDecoration: "none", color: "white" }}>
-                <Button color="inherit">My ideas</Button>
               </Link>
             </div>
             <div style={{ textAlign: "center", flexGrow: 1 }}>
