@@ -1,9 +1,9 @@
 # react
 FROM node:latest as build-stage
 WORKDIR /app
-COPY Frontend/civid-seed-react-frontend/package*.json ./
+COPY Frontend/civic-seed-react-frontend/package*.json ./
 RUN npm install
-COPY Frontend/civid-seed-react-frontend/ ./
+COPY Frontend/civic-seed-react-frontend/ ./
 RUN npm run build
 
 # server
