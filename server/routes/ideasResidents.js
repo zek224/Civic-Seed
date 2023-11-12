@@ -5,7 +5,9 @@ const db_connect = dbo.getDb();
 const ideasRouter = express.Router();
 
 
-router.post('/ideas/create', isAuthenticated, async (req, res) => {
+/**this route will deal with creating an idea */
+
+router.post('/ideas/create',async (req, res) => {
   try {
     // Replace 'db' with your actual database interface or ORM method
     const idea = await db.collection('ideas').insertOne({
@@ -35,4 +37,11 @@ router.post('/ideas/create', isAuthenticated, async (req, res) => {
   }
 });
 
-module.exports = router;
+
+
+
+
+
+
+
+module.exports = ideasRouter;
