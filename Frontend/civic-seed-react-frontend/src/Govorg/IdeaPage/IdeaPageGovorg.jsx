@@ -19,7 +19,7 @@ const IdeaPageGovorg = () => {
           console.error('Failed to fetch ideas');
         }
       } catch(e){
-        console.error('There was an error fetching the ideas', error);
+        console.error('There was an error fetching the ideas', e);
       }
     };
   }, []); // Empty dependency array means this effect will only run once after the initial render
