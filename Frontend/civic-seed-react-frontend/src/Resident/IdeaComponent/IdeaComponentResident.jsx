@@ -22,6 +22,7 @@ function IdeaComponentResident(props) {
             },
             body: JSON.stringify({
                 ideaId: ideaId,
+                // ideaId: randomId(),
                 username: user,
                 title: data.get('title'),
                 description: data.get('summary'),
