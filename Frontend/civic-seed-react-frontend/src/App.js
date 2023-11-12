@@ -9,6 +9,7 @@ import IdeasPageAdmins from "./Admin/IdeaPage/IdeaPageAdmin";
 import IdeasMine from "./Resident/IdeaPage/IdeaPageMine";
 import IdeasAdmin from "./Admin/IdeaPage/IdeaPageAdmin"
 import IdeasGovorg from "./Govorg/IdeaPage/IdeaPageGovorg"
+import FundedIdeasPageGovorg from "./Govorg/IdeaPage/FundedIdeaPageGovorg";
 import MakeIdea from "./Resident/IdeaComponent/IdeaComponentResident"
 import { BrowserRouter, Route, Routes, Navigation } from "react-router-dom";
 
@@ -21,6 +22,7 @@ function App() {
         <Route path="/ideas-page-resident" element = {<IdeasPageResident/>} />
         <Route path="/ideas-page-official" element={<IdeasPageOfficial/>} />
         <Route path="/ideas-page-admin" element={<IdeasPageAdmins/>} />
+        <Route path="/funded-ideas" element={<FundedIdeasPageGovorg/>} />
         {/* You can create an idea if you are a resident */}
         <Route path="/create" element = {<MakeIdea/>} />
         {/* Residents only has MyIdeas */ }
